@@ -14,12 +14,10 @@ app.use(bodyParser.urlencoded({ limit: '30mb', extended: true }));
 app.use(cors());
 
 app.use('/posts', postRoutes);
-// const CONNECTION_URL =
-// 	'mongodb+srv://javascriptmastery:javascriptmastery123@cluster0.y8ia2.mongodb.net/<dbname>?retryWrites=true&w=majority';
 
-app.get('/', (req, res) => {
-	res.send('Hello to Memories API');
-});
+// app.get('/', (req, res) => {
+// 	res.send('Hello to Memories API');
+// });
 
 const PORT = process.env.PORT || 5000;
 
