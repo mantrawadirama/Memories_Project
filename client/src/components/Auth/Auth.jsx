@@ -10,23 +10,44 @@ import {
 } from '@material-ui/core';
 import { GoogleLogin } from 'react-google-login';
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
+
+import { signin, signup } from '../../actions/auth';
 import { AUTH } from '../../constants/actionTypes';
 import { useHistory } from 'react-router-dom';
 import useStyles from './styles';
 
 import Icon from './icon';
 import Input from './Input';
+
+const initialState = {
+	firstName: '',
+	lastName: '',
+	email: '',
+	password: '',
+	confirmPassword: '',
+};
+
 const Auth = () => {
 	const dispatch = useDispatch();
 	const history = useHistory();
 	const classes = useStyles();
-	//const [form, setForm] = useState(initialState);
+	const [formData, setFormData] = useState(initialState);
 	const [isSignup, setIsSignup] = useState(false);
 	const [showPassword, setShowPassword] = useState(false);
 	const handleShowPassword = () =>
 		setShowPassword((prevShowPassword) => !prevShowPassword);
-	const handleSubmit = () => {};
-	const handleChange = () => {};
+	const handleSubmit = (e) => {
+		e.preventDefault();
+		if (isSignup) {
+			dispatch(signup(formData, history));
+		} else {
+			dispatch(signin(formData, history));
+		}
+		// console.log(formData);
+	};
+	const handleChange = (e) => {
+		setFormData({ ...formData, [e.target.name]: e.target.value });
+	};
 	const switchMode = () => {
 		//	setForm(initialState);
 		setIsSignup((prevIsSignup) => !prevIsSignup);
