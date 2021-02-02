@@ -12,4 +12,9 @@
 <li>Node JS</li>
 <li>Express</li>
 <li>Mongo DB</li>
+<li>Mongoose - schema for data to be stored in Mongo DB</li>
+<li>bcryptjs - Password encryption</li>
+<li>jsonwebtoken - to generate JWT</li>
+<li>jwt decode -  to get claim info</li>
+<li>react google login - to authenticate via google</li>
 </ul>
